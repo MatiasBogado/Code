@@ -2,6 +2,7 @@ iframe{
     width: 409px;
     height: 315px;
 }
+
 @media(min-width:768px){
     .container{
        display: flex;
@@ -18,6 +19,7 @@ iframe{
         padding: 10px;
     }
 }
+
 @media(min-width:1024px){
     .container{
         border-top: 1px solid black;
