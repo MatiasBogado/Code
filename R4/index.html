@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>R4 Web</title>
+    <style>
+        table {
+            width: 95%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            font-size: 14px;
+            background-color: rgb(245, 245, 245);
+        }
+        td {
+            font-size: 14px;
+        }
+ 
+        @media(min-width:1024px) {
+            th {
+                font-size: 20px;
+            }
+            td {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Usuario</th>
+                <th>Web</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+        </tbody>
+
+    </table>
+</div>
+    <script>
+        let url = 'https://jsonplaceholder.typicode.com/users'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => mostrarData(data))
+            .catch(error => console.log(error))
+
+        const mostrarData = (data) => {
+            console.log(data)
+            let body = ''
+            for (let i = 0; i < data.length; i++) {
+                body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].email}</td><td>${data[i].username}</td><td>${data[i].website}</td></tr>`
+            }
+            document.getElementById('data').innerHTML = body
+        }
+    </script>
+</body>
+</html>
